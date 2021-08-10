@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+ td.visit, th.visit,li.visit{
+  background-color:slategray;
+ 
+}
+
+td{
+  background-color: rgb(241, 204, 204);
+}
+div.pagination,th{
+  background-color: rgb(192, 181, 181);
+}
+div.pagination li{
+  background-color: rgb(240, 234, 234);
+}
+div.pagination tr{
+  
+  width: 100%;
+}
+div.pagination li.visit{
+  background-color:slategray;
+}
+div.pagination li.visit:hover {
+  background-color: yellow;
+}
+div.pagination li:hover {
+  background-color: rgb(160, 110, 17);
+}
