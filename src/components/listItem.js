@@ -28,8 +28,9 @@ function Item(props)  {
                 <tr  onMouseOver={(e)=>{(e.target.className  = 'visit');}} onMouseOut={changeBackgroundBacks}>
                         <td width="60%" className='list' >{postItem.postBody}</td>
                         <td width="10%" className='post-text' onClick={onClickRespond}>{postItem.posterName} </td>
-                        <td width="25%" className='post-description' onClick={onClickRespondMail}>{postItem.posterEmail}</td>
-                        <td width="5%" className='post-id' >{postItem.postId}</td>
+                        <td width="24%" className='post-description' onClick={onClickRespondMail}>{postItem.posterEmail}</td>
+                        <td width="3%" className='post-id' >{postItem.postId}</td>
+                        <td width="3%" className='post-by' >{postItem.postPostedBy}</td>
                         
 
                 </tr>

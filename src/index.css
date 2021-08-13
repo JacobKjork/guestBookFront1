@@ -38,3 +38,6 @@ div.pagination li.visit:hover {
 div.pagination li:hover {
   background-color: rgb(160, 110, 17);
 }
+ tr.nodisplay td.nodisplay  {
+  display: none;
+}

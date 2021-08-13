@@ -9,7 +9,7 @@ function Root() {
     const{data,reqStatus,error,updateData} = manageData(0,[])
     let ini = true;
     const doInit  = useMemo(() => {return init()});
-    function onInputSubmitClick(namn,email,meddelande) {
+    function onInputSubmitClick(namn,email,meddelande,userId) {
 
         
 
@@ -20,7 +20,8 @@ function Root() {
             .post('http://localhost:4000/api/v1/setPost', {
                 posterName: namn,
                 posterEmail: email,
-                postBody: meddelande
+                postBody: meddelande,
+                postPostedBy: userId
             })
             .then(res => {
                 console.log(`statusCode: ${res.status}`)

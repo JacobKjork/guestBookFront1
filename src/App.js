@@ -1,21 +1,25 @@
 import React from 'react';
-import Root from "./components/root";
 import './App.css';
 import MainLayout from "./components/mainLayout"
+import { AuthProvider } from "./contex/AuthContext"
+
+
 
 
 
 
 
 function App() {
-  
+
 
 
   return (
     <div className="container">
-      <MainLayout>
-      <Root/>
-      </MainLayout>
+      <AuthProvider >
+        <MainLayout>
+         
+        </MainLayout>
+      </AuthProvider>
     </div>
   );
 }

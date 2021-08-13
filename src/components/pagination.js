@@ -31,8 +31,8 @@ function Pagination({ totCount, pageSize, paginationData, setPaginationData }) {
         var rows = [];
         for (var i = 0; i < totChunck; i++) {
             
-            rows.push(<li 
-                style={{display: 'inline-block', 'margin-left': 15}}
+            rows.push(<li key={i}
+                style={{display: 'inline-block', marginLeft: 15}}
                 onClick={(e)=>newPage(e)}
                 >{i}
                 </li>);
@@ -41,14 +41,15 @@ function Pagination({ totCount, pageSize, paginationData, setPaginationData }) {
     }
     return (
 
-        <div class="pagination"  style={{display: 'inline', 'width': '100%'}}>
-            <ul style={{display: 'inline', 'list-style-type': 'none', 'width': '100%'}}> {showPagination().map(i=>i)}</ul>
+        <div className="pagination"  style={{display: 'inline', 'width': '100%'}}>
+            <ul style={{display: 'inline', listStyleType: 'none', 'width': '100%'}}>
+            {showPagination().map(i=>i )}
             <span> &nbsp; &nbsp; &nbsp;  </span>
+            </ul>
 
-
-            <p style={{display: 'inline-block', 'list-style-type': 'none'}}>visar :&nbsp; {paginationData.startSlice}&nbsp; </p>
-            <p style={{display: 'inline-block', 'list-style-type': 'none'}}>-&nbsp; {paginationData.stopSlice}&nbsp; </p>
-            <p style={{display: 'inline-block', 'list-style-type': 'none'}}>av :&nbsp; {totCount}</p>
+            <p style={{display: 'inline-block' }}>visar :&nbsp; {paginationData.startSlice}&nbsp; </p>
+            <p style={{display: 'inline-block' }}>-&nbsp; {paginationData.stopSlice}&nbsp; </p>
+            <p style={{display: 'inline-block' }}>av :&nbsp; {totCount}</p>
         </div>
     );
 } export default Pagination;

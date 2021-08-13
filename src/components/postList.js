@@ -8,6 +8,7 @@ export const SORT_STATE = {
   NAME:"name",
   MAIL:"mail",
   ID:"id",
+  POSTEDBY:"posted by",
   FILTER_ON_NAME:"filter name",
   FILTER_ON_MAIL:"filter mail",
   DEFAULT:"default",
@@ -25,8 +26,9 @@ function List  (props)  {
     
    
   }, []);
+  
   if (!posts || posts.length === 0) return <p>No posts, sorry</p>;
- 
+  props.lista.posts.forEach(function(b) {!(b.postPostedBy === undefined) ? b.postPostedBy : (b.postPostedBy = 0)} )
   let listItems = Object.values(props.lista.posts).map((post) =>
     
     <Item key={post.postId} postItem={post} sortOrder={sortOrder} doSort={doSort} filterName={filterName} doFilterMail={doFilterMail} filterMail={filterMail} doFilter={doFilter}/>
@@ -50,6 +52,9 @@ function sortOnMail(items){
 }
 function sortOnId(items){
   doSort({...sortOrder,SORT_STATE:SORT_STATE.ID, upp:!sortOrder.upp});     
+}
+function sortOnPostedBy(items){
+  doSort({...sortOrder,SORT_STATE:SORT_STATE.POSTEDBY, upp:!sortOrder.upp});     
 }
 function filterOnName(e,items){
   alert("filter")
@@ -122,6 +127,9 @@ switch(sortOrder.SORT_STATE) {
     case SORT_STATE.ID:
     listItems = listItems.sort(function(a,b){return b.props.postItem.postId - a.props.postItem.postId *direction()});
     break;
+    case SORT_STATE.POSTEDBY:
+      listItems = listItems.sort(function(a,b){return b.props.postItem.postPostedBy - a.props.postItem.postPostedBy *direction()});
+      break;
   case SORT_STATE.FILTER_ON_NAME:
     let str1 = filterName
     listItems = listItems.filter(a => a.props.postItem.posterName == str1);
@@ -136,28 +144,31 @@ switch(sortOrder.SORT_STATE) {
 
   
   return (
-    
+    <div>
+    <h1>{namn}</h1>
+    <h1>{searchQuery}</h1>
     <table>
       
-      <h1>{namn}</h1>
-      <h1>{searchQuery}</h1>
+      
         <tbody>
           <tr  onMouseOver={(e)=>{(e.target.className  = 'visit');}} onMouseOut={(e)=>{(e.target.className  = 'notvisit');}}>
             <th width="60%" onClick={sortOnMessage}>Meddelande</th>
             <th width="10%" onClick={sortOnName}>Namn</th>
-            <th width="25%" onClick={sortOnMail}>mail</th>
-            <th width="5%"  onClick={sortOnId}>id</th>
+            <th width="24%" onClick={sortOnMail}>mail</th>
+            <th width="3%"  onClick={sortOnId}>id</th>
+            <th width="3%"  onClick={sortOnPostedBy}>id</th>
             </tr>
       {listItems.slice(paginationData.startSlice,paginationData.stopSlice)}
      
-      
+      <tr>
       <td>
       <Pagination pageSize="5" totCount={listItems.length} paginationData={paginationData} setPaginationData={setPaginationData}/> 
-      </td><td></td><td></td><td></td>
+      </td><td></td><td></td><td></td><td></td></tr>
       
       
       </tbody>
     </table>
+    </div>
   );
 };
 export default List;
